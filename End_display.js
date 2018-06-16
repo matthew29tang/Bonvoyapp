@@ -251,6 +251,95 @@ export default class End_display extends React.Component {
   changeEnd_date = (val) => { this.setState({ end_date:val }); };
 
   render() {
+    /*
+    //console.log(this.props.data);
+    const data_list = this.props.data.itinerary.map(thing => 
+      (<View>
+      <Text style = {{fontSize:20, fontWeight: 'bold', marginTop:10, marginBottom:10, marginLeft:10}}>{thing.date}</Text>
+      <Card full>
+      <Card.Header
+        title={thing.hotel.name}
+        thumbStyle={{ width: 30, height: 30 }}
+        thumb={thing.hotel.image_url}
+        extra="Hotel"
+      />
+      <Card.Body>
+        <View style={{ height: 15 }}>
+          <Text style={{ marginLeft: 16 }}>{"Address: " + thing.hotel.location.address1}</Text>
+        </View>
+      </Card.Body>
+      <Card.Footer content={"Price: " + thing.hotel.price} extra={"Rating: " + thing.hotel.rating} />
+      </Card>
+    
+      <Card full>
+      <Card.Header
+        title={thing.breakfast.name}
+        thumbStyle={{ width: 30, height: 30 }}
+        thumb={thing.breakfast.image_url}
+        extra="Breakfast"
+      />
+      <Card.Body>
+        <View style={{ height: 15 }}>
+          <Text style={{ marginLeft: 16 }}>{"Address: " + thing.breakfast.location.address1}</Text>
+        </View>
+      </Card.Body>
+      <Card.Footer content={"Price: " + thing.breakfast.price} extra={"Rating: " + thing.breakfast.rating} />
+      </Card>
+    
+      <Card full>
+        <Card.Header
+          title={thing.lunch.name}
+          thumbStyle={{ width: 30, height: 30 }}
+          thumb={thing.lunch.image_url}
+          extra="Lunch"
+        />
+        <Card.Body>
+          <View style={{ height: 15 }}>
+            <Text style={{ marginLeft: 16 }}>{"Address: " + thing.lunch.location.address1}</Text>
+          </View>
+        </Card.Body>
+        <Card.Footer content={"Price: " + thing.lunch.price} extra={"Rating: " + thing.lunch.rating} />
+      </Card>
+    
+      <Card full>
+        <Card.Header
+          title={thing.dinner.name}
+          thumbStyle={{ width: 30, height: 30 }}
+          thumb={thing.dinner.image_url}
+          extra="Dinner"
+        />
+        <Card.Body>
+          <View style={{ height: 15 }}>
+            <Text style={{ marginLeft: 16 }}>{"Address: " + thing.dinner.location.address1}</Text>
+          </View>
+        </Card.Body>
+        <Card.Footer content={"Price: " + thing.dinner.price} extra={"Rating: " + thing.dinner.rating} />
+      </Card>
+      
+    
+    {thing.attractions.map(att =>
+        <Card full>
+        <Card.Header
+          title={att.name}
+          thumbStyle={{ width: 30, height: 30 }}
+          thumb={att.image_url}
+          extra="Attraction"
+        />
+        <Card.Body>
+          <View style={{ height: 15 }}>
+            <Text style={{ marginLeft: 16 }}>{"Address: " + att.location.address1}</Text>
+          </View>
+        </Card.Body>
+        <Card.Footer content={"Price: " + att.price} extra={"Rating: " + att.rating} />
+      </Card>
+      )
+    }
+    </View>)
+    
+    );
+
+    */
+
     return (
       <ScrollView>
       <LocaleProvider locale={enUS}>
@@ -260,21 +349,22 @@ export default class End_display extends React.Component {
         <View>
   <Card full>
   <Card.Header
-    title={data[0].transportation.name}
+    title={this.props.data.transportation.startAirport.name + " - " + this.props.data.transportation.endAirport.name + " roundtrip"}
     thumbStyle={{ width: 30, height: 30 }}
     thumb="http://www.readersdigest.ca/wp-content/uploads/2017/03/surprising-airplane-facts-plane-crashes.jpg"
     extra="Transportation"
   />
   <Card.Body>
     <View style={{ height: 15 }}>
-      <Text style={{ marginLeft: 16 }}>{"Address: " + data[0].transportation.address}</Text>
+      <Text style={{ marginLeft: 16 }}>{"Starting Address: " + this.props.data.transportation.startAirport.formatted_address}</Text>
+      <Text style={{ marginLeft: 16 }}>{"Destination Address: " + this.props.data.transportation.endAirport.formatted_address}</Text>
     </View>
   </Card.Body>
-  <Card.Footer content={"Price: " + data[0].transportation.price}  />
+  <Card.Footer content={"Price: " + this.props.data.transportation.price}  />
   </Card>
 
   </View>
-        {data_list};
+        {/*data_list */};
       </View>
       </LocaleProvider>
       </ScrollView> 
@@ -284,89 +374,7 @@ export default class End_display extends React.Component {
 
 
 
-const data_list = data.map(thing => 
-  <View>
-  <Text style = {{fontSize:20, fontWeight: 'bold', marginTop:10, marginBottom:10, marginLeft:10}}>{thing.date}</Text>
-  <Card full>
-  <Card.Header
-    title={thing.hotel.name}
-    thumbStyle={{ width: 30, height: 30 }}
-    thumb={thing.hotel.image_url}
-    extra="Hotel"
-  />
-  <Card.Body>
-    <View style={{ height: 15 }}>
-      <Text style={{ marginLeft: 16 }}>{"Address: " + thing.hotel.location.address1}</Text>
-    </View>
-  </Card.Body>
-  <Card.Footer content={"Price: " + thing.hotel.price} extra={"Rating: " + thing.hotel.rating} />
-  </Card>
 
-  <Card full>
-  <Card.Header
-    title={thing.breakfast.name}
-    thumbStyle={{ width: 30, height: 30 }}
-    thumb={thing.breakfast.image_url}
-    extra="Breakfast"
-  />
-  <Card.Body>
-    <View style={{ height: 15 }}>
-      <Text style={{ marginLeft: 16 }}>{"Address: " + thing.breakfast.location.address1}</Text>
-    </View>
-  </Card.Body>
-  <Card.Footer content={"Price: " + thing.breakfast.price} extra={"Rating: " + thing.breakfast.rating} />
-  </Card>
-
-  <Card full>
-    <Card.Header
-      title={thing.lunch.name}
-      thumbStyle={{ width: 30, height: 30 }}
-      thumb={thing.lunch.image_url}
-      extra="Lunch"
-    />
-    <Card.Body>
-      <View style={{ height: 15 }}>
-        <Text style={{ marginLeft: 16 }}>{"Address: " + thing.lunch.location.address1}</Text>
-      </View>
-    </Card.Body>
-    <Card.Footer content={"Price: " + thing.lunch.price} extra={"Rating: " + thing.lunch.rating} />
-  </Card>
-
-  <Card full>
-    <Card.Header
-      title={thing.dinner.name}
-      thumbStyle={{ width: 30, height: 30 }}
-      thumb={thing.dinner.image_url}
-      extra="Dinner"
-    />
-    <Card.Body>
-      <View style={{ height: 15 }}>
-        <Text style={{ marginLeft: 16 }}>{"Address: " + thing.dinner.location.address1}</Text>
-      </View>
-    </Card.Body>
-    <Card.Footer content={"Price: " + thing.dinner.price} extra={"Rating: " + thing.dinner.rating} />
-  </Card>
-
-{thing.attractions.map(att =>
-    <Card full>
-    <Card.Header
-      title={att.name}
-      thumbStyle={{ width: 30, height: 30 }}
-      thumb={att.image_url}
-      extra="Attraction"
-    />
-    <Card.Body>
-      <View style={{ height: 15 }}>
-        <Text style={{ marginLeft: 16 }}>{"Address: " + att.location.address1}</Text>
-      </View>
-    </Card.Body>
-    <Card.Footer content={"Price: " + att.price} extra={"Rating: " + att.rating} />
-  </Card>
-  )
-}
-</View>
-
-);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
