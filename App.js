@@ -3,6 +3,7 @@ import enUS from 'antd-mobile-rn/lib/locale-provider/en_US';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { List, TextareaItem, DatePicker } from 'antd-mobile-rn';
+import End_display  from './End_display';
 
 export default class App extends React.Component {
 
@@ -14,7 +15,8 @@ export default class App extends React.Component {
       interest: '',
       taste: '',
       start_date:'',
-      end_date:''
+      end_date:'',
+      display:'end'
     };
   }
 
@@ -26,6 +28,7 @@ export default class App extends React.Component {
   changeEnd_date = (val) => { this.setState({ end_date:val }); };
 
   render() {
+    if (this.state.display === 'start')
     return (
       <LocaleProvider locale={enUS}>
       <View style={styles.container}>
@@ -64,6 +67,8 @@ export default class App extends React.Component {
       </View>
       </LocaleProvider>
     );
+    else if (this.state.display === 'end')
+      return <End_display />;
   }
 }
 
