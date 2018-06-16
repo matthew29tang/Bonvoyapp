@@ -16,8 +16,8 @@ export default class App extends React.Component {
       budget: '',
       interests: '',
       tastes: '',
-      startTime: new Date(),
-      endTime: new Date(),
+      startTime:'6-16-18',
+      endTime:'6-18-18',
       display:'start',
       startLocation: '',
       loading: false
@@ -29,14 +29,10 @@ export default class App extends React.Component {
   changeBudget = (val) => { this.setState({ budget: parseInt(val) }); };
   changeInterest = (val) => { this.setState({ interests:val }); };
   changeTaste = (val) => { this.setState({ tastes:val }); };
-  changeStart_date = (val) => { 
-    console.log(val);
-    this.setState({ startTime: val }); };
-  changeEnd_date = (val) => { this.setState({ endTime: val }); };
+  changeStart_date = (val) => { this.setState({ startTime:val }); };
+  changeEnd_date = (val) => { this.setState({ endTime:val }); };
 
   render() {
-    console.log("RENDER")
-    console.log(this.state.startTime)
     if (this.state.display === 'start')
     return (
       <LocaleProvider locale={enUS}>
@@ -47,33 +43,6 @@ export default class App extends React.Component {
         <TextareaItem value={this.state.budget.toString()} placeholder = "Budget" onChange={this.changeBudget} style={styles.box} />
         <TextareaItem value={this.state.interests} placeholder = "Interests" onChange={this.changeInterest} style={styles.box} />
         <TextareaItem value={this.state.tastes} placeholder = "Tastes Preference" onChange={this.changeTaste} style={styles.box} />
-        <List style= {styles.list}>
-          <DatePicker
-            value={this.state.startTime}
-            mode="date"
-            minDate={new Date(2018, 0, 1)}
-            maxDate={new Date(2099, 12, 31)}
-            onChange={this.changeStart_date}
-            format="YYYY-MM-DD"
-            style = {styles.box}
-          >
-            <List.Item arrow="horizontal" style = {styles.date}>Start Date</List.Item>
-          </DatePicker>
-        </List>
-        <List style= {styles.list}>
-          <DatePicker
-            value={this.state.endTime}
-            mode="date"
-            minDate={new Date(2018, 0, 1)}
-            maxDate={new Date(2099, 12, 31)}
-            onChange={this.changeEnd_date}
-            format="YYYY-MM-DD"
-            style = {styles.box}
-          >
-            <List.Item arrow="horizontal" style = {styles.date}>End Date</List.Item>
-            
-          </DatePicker>
-          </List>
           <Button type="primary" onClick={async () => {
             this.setState({loading: true});
             const toSend = JSON.stringify({
