@@ -16,8 +16,8 @@ export default class App extends React.Component {
       budget: '',
       interests: '',
       tastes: '',
-      startTime:'',
-      endTime:'',
+      startTime: new Date(),
+      endTime: new Date(),
       display:'start',
       startLocation: '',
       loading: false
@@ -29,10 +29,14 @@ export default class App extends React.Component {
   changeBudget = (val) => { this.setState({ budget: parseInt(val) }); };
   changeInterest = (val) => { this.setState({ interests:val }); };
   changeTaste = (val) => { this.setState({ tastes:val }); };
-  changeStart_date = (val) => { this.setState({ startTime:val }); };
-  changeEnd_date = (val) => { this.setState({ endTime:val }); };
+  changeStart_date = (val) => { 
+    console.log(val);
+    this.setState({ startTime: val }); };
+  changeEnd_date = (val) => { this.setState({ endTime: val }); };
 
   render() {
+    console.log("RENDER")
+    console.log(this.state.startTime)
     if (this.state.display === 'start')
     return (
       <LocaleProvider locale={enUS}>

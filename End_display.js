@@ -251,9 +251,9 @@ export default class End_display extends React.Component {
   changeEnd_date = (val) => { this.setState({ end_date:val }); };
 
   render() {
-    /*
     //console.log(this.props.data);
-    const data_list = this.props.data.itinerary.map(thing => 
+    let data_list = this.props.data.itinerary.map((thing) =>{
+      return  
       (<View>
       <Text style = {{fontSize:20, fontWeight: 'bold', marginTop:10, marginBottom:10, marginLeft:10}}>{thing.date}</Text>
       <Card full>
@@ -268,7 +268,7 @@ export default class End_display extends React.Component {
           <Text style={{ marginLeft: 16 }}>{"Address: " + thing.hotel.location.address1}</Text>
         </View>
       </Card.Body>
-      <Card.Footer content={"Price: " + thing.hotel.price} extra={"Rating: " + thing.hotel.rating} />
+      <Card.Footer content={"Price: " + thing.hotel.price.toFixed(2)} extra={"Rating: " + thing.hotel.rating} />
       </Card>
     
       <Card full>
@@ -283,7 +283,7 @@ export default class End_display extends React.Component {
           <Text style={{ marginLeft: 16 }}>{"Address: " + thing.breakfast.location.address1}</Text>
         </View>
       </Card.Body>
-      <Card.Footer content={"Price: " + thing.breakfast.price} extra={"Rating: " + thing.breakfast.rating} />
+      <Card.Footer content={"Price: " + thing.breakfast.price.toFixed(2)} extra={"Rating: " + thing.breakfast.rating} />
       </Card>
     
       <Card full>
@@ -298,7 +298,7 @@ export default class End_display extends React.Component {
             <Text style={{ marginLeft: 16 }}>{"Address: " + thing.lunch.location.address1}</Text>
           </View>
         </Card.Body>
-        <Card.Footer content={"Price: " + thing.lunch.price} extra={"Rating: " + thing.lunch.rating} />
+        <Card.Footer content={"Price: " + thing.lunch.price.toFixed(2)} extra={"Rating: " + thing.lunch.rating} />
       </Card>
     
       <Card full>
@@ -313,7 +313,7 @@ export default class End_display extends React.Component {
             <Text style={{ marginLeft: 16 }}>{"Address: " + thing.dinner.location.address1}</Text>
           </View>
         </Card.Body>
-        <Card.Footer content={"Price: " + thing.dinner.price} extra={"Rating: " + thing.dinner.rating} />
+        <Card.Footer content={"Price: " + thing.dinner.price.toFixed(2)} extra={"Rating: " + thing.dinner.rating} />
       </Card>
       
     
@@ -330,15 +330,15 @@ export default class End_display extends React.Component {
             <Text style={{ marginLeft: 16 }}>{"Address: " + att.location.address1}</Text>
           </View>
         </Card.Body>
-        <Card.Footer content={"Price: " + att.price} extra={"Rating: " + att.rating} />
+        <Card.Footer content={"Price: " + att.price.toFixed(2)} extra={"Rating: " + att.rating} />
       </Card>
       )
     }
     </View>)
-    
+    }
     );
 
-    */
+
 
     return (
       <ScrollView>
@@ -360,11 +360,11 @@ export default class End_display extends React.Component {
       <Text style={{ marginLeft: 16 }}>{"Destination Address: " + this.props.data.transportation.endAirport.formatted_address}</Text>
     </View>
   </Card.Body>
-  <Card.Footer content={"Price: " + this.props.data.transportation.price}  />
+  <Card.Footer content={"Price: " + this.props.data.transportation.price.toFixed(2)}  />
   </Card>
 
   </View>
-        {/*data_list */};
+        {data_list};
       </View>
       </LocaleProvider>
       </ScrollView> 
