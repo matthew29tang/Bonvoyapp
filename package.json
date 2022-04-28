@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "antd-mobile-rn": "^2.2.0",
-    "cross-fetch": "^2.2.1",
+    "cross-fetch": "^3.1.5",
     "expo": "^27.0.1",
     "isomorphic-fetch": "^2.2.1",
     "react": "16.3.1",
